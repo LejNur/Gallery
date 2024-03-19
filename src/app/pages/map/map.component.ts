@@ -15,7 +15,7 @@ import { InputComponent } from '../../components/input/input.component';
   styleUrl: './map.component.css',
 })
 @Injectable()
-export class MapComponent {
+export class MapComponent implements OnInit {
   // geocoding
   map!: L.Map;
   lat!: number;
