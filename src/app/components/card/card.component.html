@@ -1,1 +1,9 @@
-<p>card works!</p>
+<div [ngClass]="cardContainer">
+    <img [src]="srcImg" [ngClass]="classImg" #img #product>
+    <div [ngClass]="hoverState">
+        <p [ngClass]="text" [innerText]="authorName"></p>
+        <div>
+            <button [ngClass]="buttonClass" (click)="fullScreen(img.src)">Fullscreen</button>
+        </div>
+    </div>
+</div>
