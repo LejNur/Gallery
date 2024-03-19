@@ -1,1 +1,19 @@
-<p>map works!</p>
+<app-input [myPlaceholder]="placeholderText" (newClickEvent)="onSearch($event)" containerClass="text-center my-20"
+    inputClass="bg-white shadow rounded border-0 p-3 w-1/4"
+    buttonClass="btn btn-transparent flex-shrink-0 rounded text-sm border border-0 shadow  p-3 mx-5 hover:bg-black hover:text-white transition-hover duration-300 align-bottom">
+</app-input>
+
+
+
+<h3 class="text-4xl text-center text-slate-950 font-light tracking-widest my-10">Map of most recent published photos
+</h3>
+
+@if(showMap) {
+
+<div id="map-container">
+    <div id="map" leaflet [leafletOptions]="options" [leafletLayers]="layers" [(leafletCenter)]="center"
+        [(leafletZoom)]="zoom" [leafletZoomOptions]="zoomOptions">
+    </div>
+</div>
+}
+

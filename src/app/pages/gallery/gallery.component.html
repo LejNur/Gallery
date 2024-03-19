@@ -1,1 +1,80 @@
-<p>gallery works!</p>
+<h1 class="text-6xl text-center text-slate-950 font-light tracking-widest mt-10 mb-16">Gallery</h1>
+<h3 class="text-2xl text-center text-slate-950 font-light tracking-widest my-10">Latest Photos</h3>
+
+
+
+<!-- Gallery Grid-Latest Photos -->
+
+<div class="grid sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-4 mx-10">
+
+    @for(img of imgUrl; track $index) {
+
+    <app-card cardContainer="relative group h-full object-cover" classImg="h-full object-cover"
+        [srcImg]=img.urls.regular
+        hoverState="absolute inset-0 bg-black opacity-0 flex items-center justify-center group-hover:opacity-60 transition-opacity duration-300"
+        text="text-white font-light text-center text-base tracking-widest" authorName="{{img.user.first_name}}"
+        (clickGallery)="onFullscreen($event)"
+        buttonClass="text-white font-light text-center p-2 border border-1 m-2 hover:animate-pulse animate-once animate-ease-linear animate-fill-forwards">
+    </app-card>
+
+    @if(isFullscreen) {
+    <div class=" fixed z-50 inset-0 flex justify-center items-center bg-black bg-opacity-10 cursor-pointer"
+        (click)="closeFullscreen()">
+        <div class="relative max-w-screen max-h-screen">
+            <img [src]="singleImg" class="w-fit h-screen p-20">
+        </div>
+        <button class="absolute top-0 right-0 m-4 p-2" (click)="closeFullscreen()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2"
+                stroke="currentColor" class="w-8 h-8 text-slate-400 hover:text-slate-50 transition-hover duration-300">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+        </button>
+
+    </div>
+    }
+    }
+
+</div>
+<a class="bg-white inline-block py-2 px-4 text-slate-700 text-lg font-base hover:text-slate-950" routerLink="/map"
+    routerLinkActive="text-slate-950 font-semibold">Geoposition</a>
+
+<!-- Search Grid-->
+
+<app-input [myPlaceholder]="placeholderText" (newClickEvent)="onSearchPicture($event)"
+    containerClass="text-center my-20" inputClass="bg-white shadow rounded border-0 p-3 w-1/4"
+    buttonClass="btn btn-transparent flex-shrink-0 rounded text-sm border border-0 shadow  p-3 mx-5 hover:bg-black hover:text-white transition-hover duration-300 align-bottom">
+</app-input>
+
+
+<div class="grid sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-4 m-10">
+
+    @for(query of queryUrl; track $index) {
+
+    <app-card cardContainer="relative group h-full object-cover" classImg="h-full object-cover"
+        [srcImg]=query.urls.regular
+        hoverState="absolute inset-0 bg-black opacity-0 flex items-center justify-center group-hover:opacity-60 transition-opacity duration-300"
+        text="text-white font-light text-center text-base tracking-widest" authorName="{{query.user.first_name}}"
+        (clickGallery)="onFullscreen($event)"
+        buttonClass="text-white font-light text-center p-2 border border-1 m-2 hover:animate-pulse animate-once animate-ease-linear animate-fill-forwards">
+    </app-card>
+
+    @if(isFullscreen) {
+    <div class=" fixed z-50 inset-0 flex justify-center items-center bg-black bg-opacity-10 cursor-pointer"
+        (click)="closeFullscreen()">
+        <div class="relative max-w-screen max-h-screen">
+            <img [src]="singleImg" class="w-fit h-screen p-20">
+        </div>
+        <button class="absolute top-0 right-0 m-4 p-2" (click)="closeFullscreen()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2"
+                stroke="currentColor" class="w-8 h-8 text-slate-400 hover:text-slate-50 transition-hover duration-300">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+        </button>
+
+    </div>
+    }
+
+    }
+
+</div>
+
