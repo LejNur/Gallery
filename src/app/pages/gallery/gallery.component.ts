@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { FormsModule } from '@angular/forms';
 import { InputComponent } from '../../components/input/input.component';
@@ -28,6 +28,25 @@ export class GalleryComponent implements OnInit {
   singleImg: string | null = null;
   isFullscreen: boolean = false;
 
+  //scroll to section
+  @ViewChild('searchPhotoSection', { static: false })
+  searchPhotoSection!: ElementRef;
+
+  scrollToNewPhotos() {
+
+  setTimeout(()=> {
+      if (this.searchPhotoSection) {
+        // Scroll to the top of the new photos section
+        this.searchPhotoSection.nativeElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    }, 100);
+
+
+  }
+
   //input component
   placeholderText = 'Search Photo';
 
@@ -49,7 +68,7 @@ export class GalleryComponent implements OnInit {
   }
 
   onSearchPicture(input: string) {
-    let result = this.galleryApi.searchPictures(input);
+   let result = this.galleryApi.searchPictures(input);
 
     result
       .then((res) => {
@@ -58,6 +77,10 @@ export class GalleryComponent implements OnInit {
       .catch((error) => {
         console.log('error', error);
       });
+
+      //scrolling
+     this.scrollToNewPhotos();
+
   }
 
   onFullscreen(img: string) {
@@ -72,4 +95,6 @@ export class GalleryComponent implements OnInit {
     this.singleImg = null;
     this.isFullscreen = !this.isFullscreen;
   }
+
+  
 }

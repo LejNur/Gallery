@@ -104,7 +104,7 @@ export class MapComponent implements OnInit {
       .then((res) => {
         let searchLat = res.data[0].lat;
         let searchLon = res.data[0].lon;
-        // console.log(searchLat, searchLon, res.data[0].name);
+        
         this.center = L.latLng(searchLat, searchLon);
         this.zoom = 8;
         this.zoomOptions = true;
