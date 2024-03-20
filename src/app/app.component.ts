@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { MapComponent } from './pages/map/map.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,

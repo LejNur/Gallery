@@ -5,12 +5,12 @@ import { FormsModule } from '@angular/forms';
 import * as L from 'leaflet';
 import { marker } from 'leaflet';
 import { InputComponent } from '../../components/input/input.component';
-
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-map',
   standalone: true,
-  imports: [LeafletModule, FormsModule, InputComponent],
+  imports: [LeafletModule, FormsModule, InputComponent, RouterLink, RouterLinkActive],
   templateUrl: './map.component.html',
   styleUrl: './map.component.css',
 })

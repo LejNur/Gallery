@@ -1,3 +1,6 @@
+<a class="bg-white btn-transparent flex-shrink-0 rounded border border-0 shadow hover:bg-black hover:text-white transition-hover duration-300 inline-block py-2 px-4 text-slate-700 text-sm font-base ms-10 mt-10"
+    routerLink="/" routerLinkActive="text-slate-950 font-semibold">Go back to Gallery</a>
+
 <app-input [myPlaceholder]="placeholderText" (newClickEvent)="onSearch($event)" containerClass="text-center my-20"
     inputClass="bg-white shadow rounded border-0 p-3 w-1/4"
     buttonClass="btn btn-transparent flex-shrink-0 rounded text-sm border border-0 shadow  p-3 mx-5 hover:bg-black hover:text-white transition-hover duration-300 align-bottom">
@@ -5,7 +8,7 @@
 
 
 
-<h3 class="text-4xl text-center text-slate-950 font-light tracking-widest my-10">Map displaying the latest published photo locations.
+<h3 class="text-4xl text-center text-slate-950 font-light tracking-widest my-10">Map displaying the latest published photo locations
 </h3>
 
 @if(showMap) {
